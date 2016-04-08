@@ -10,18 +10,18 @@ args <- parser$parse_args()
 
 hp_dir <- gsub("/all/", "/highperf_dram/", args$dir)
 lp_dir <- gsub("/all/", "/lp_dram/", args$dir)
-refMPKI_csv <- paste(args$dir, "/MPKI.csv", sep="")
+ref_memory_intensity_csv <- paste(args$dir, "/average_outstanding_requests.csv", sep="")
 hpipc_csv <- paste(hp_dir, "/", args$ytitle, ".csv", sep="")
 lpipc_csv <- paste(lp_dir, "/", args$ytitle, ".csv", sep="")
 print(hpipc_csv)
 print(lpipc_csv)
-print(refMPKI_csv)
+print(ref_memory_intensity_csv)
 print(args$ytitle)
 print(args$graphtitle)
 
 hp_normalized_ipc <- read.csv(hpipc_csv)
 lp_normalized_ipc <- read.csv(lpipc_csv)
-ref_MPKI <- read.csv(refMPKI_csv)
+ref_memory_intensity <- read.csv(ref_memory_intensity_csv)
 ytitle <- args$ytitle
 graphtitle <- args$graphtitle
 output_prefix <- paste(args$dir, "/", args$ytitle, sep="")
@@ -31,16 +31,16 @@ print(output_prefix)
 
 #library(plyr)
 library(dplyr)
-print(head(ref_MPKI))
+print(head(ref_memory_intensity))
 
-ref_MPKI <- filter(ref_MPKI, DRAM == "DDR3-2133L")
-print(head(ref_MPKI))
+ref_memory_intensity <- filter(ref_memory_intensity, DRAM == "DDR3-2133L")
+print(head(ref_memory_intensity))
 
 # The next block of code renders the plot, the columns `dose` and `length` on the x, y axes and `supp` is used to group the data and [colour](https://www.getdatajoy.com/learn/Colour_Names:_Complete_List) each line.
 cbPalette <- c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#FF79A7")
 
 library(ggplot2)
-p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, ref_MPKI), y=value,       # columns to plot
+p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, ref_memory_intensity), y=value,       # columns to plot
                fill=DRAM, group=DRAM, color=DRAM)) +           # colour determined by "dupp"
     scale_fill_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
     scale_colour_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
@@ -54,17 +54,17 @@ p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, ref_MPKI), y=value,       
     plot.margin=rep(unit(0,"cm"),each=4))
 
 
-p2<-ggplot(ref_MPKI, aes(x=reorder(workload, ref_MPKI), y=ref_MPKI)) +
+p2<-ggplot(ref_memory_intensity, aes(x=reorder(workload, ref_memory_intensity), y=ref_memory_intensity)) +
     geom_bar(stat='identity') +
     xlab("workloads") +
-    ylab("MPKI") +
-    ylim(0,200) +
+    ylab("average outstanding requests") +
+    ylim(0,50) +
     theme(axis.text.x=element_text(angle=60, vjust=0.5, size=8),
     plot.margin=rep(unit(0,"cm"),each=4))
 
-p3<-ggplot(lp_normalized_ipc, aes(x=reorder(workload, ref_MPKI), y=value,       # columns to plot
+p3<-ggplot(lp_normalized_ipc, aes(x=reorder(workload, ref_memory_intensity), y=value,       # columns to plot
                fill=DRAM, group=DRAM, color=DRAM)) +           # colour determined by "dupp"
-    scale_colour_manual(values=c( "#0072B2", "#D55E00", "#CC79A7", "#BB7900")) +
+    scale_colour_manual(values=c("#0072B2", "#D55E00", "#CC79A7", "#BB7900")) +
     geom_line() +
     xlab("workloads") +                               # x-axis label
     ylab(ytitle) +                             # y-axis label
