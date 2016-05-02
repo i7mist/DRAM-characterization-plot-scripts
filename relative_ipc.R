@@ -21,7 +21,13 @@ print(args$graphtitle)
 
 hp_normalized_ipc <- read.csv(hpipc_csv)
 lp_normalized_ipc <- read.csv(lpipc_csv)
+hp_normalized_ipc$idu <- row.names(hp_normalized_ipc)
+lp_normalized_ipc$idu <- row.names(lp_normalized_ipc)
+hp_normalized_ipc <- transform(hp_normalized_ipc, idu = as.numeric(idu))
+lp_normalized_ipc <- transform(lp_normalized_ipc, idu = as.numeric(idu))
 ref_MPKI <- read.csv(refMPKI_csv)
+ref_MPKI$idu <- row.names(ref_MPKI)
+ref_MPKI <- transform(ref_MPKI, idu = as.numeric(idu))
 ytitle <- args$ytitle
 graphtitle <- args$graphtitle
 output_prefix <- paste(args$dir, "/", args$ytitle, sep="")
@@ -40,7 +46,7 @@ print(head(ref_MPKI))
 cbPalette <- c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#FF79A7")
 
 library(ggplot2)
-p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, ref_MPKI), y=value,       # columns to plot
+p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, idu), y=value,       # columns to plot
                fill=DRAM, group=DRAM, color=DRAM)) +           # colour determined by "dupp"
     scale_fill_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
     scale_colour_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
@@ -54,7 +60,7 @@ p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, ref_MPKI), y=value,       
     plot.margin=rep(unit(0,"cm"),each=4))
 
 
-p2<-ggplot(ref_MPKI, aes(x=reorder(workload, ref_MPKI), y=ref_MPKI)) +
+p2<-ggplot(ref_MPKI, aes(x=reorder(workload, idu), y=ref_MPKI)) +
     geom_bar(stat='identity') +
     xlab("workloads") +
     ylab("MPKI") +
@@ -62,7 +68,7 @@ p2<-ggplot(ref_MPKI, aes(x=reorder(workload, ref_MPKI), y=ref_MPKI)) +
     theme(axis.text.x=element_text(angle=60, vjust=0.5, size=8),
     plot.margin=rep(unit(0,"cm"),each=4))
 
-p3<-ggplot(lp_normalized_ipc, aes(x=reorder(workload, ref_MPKI), y=value,       # columns to plot
+p3<-ggplot(lp_normalized_ipc, aes(x=reorder(workload, idu), y=value,       # columns to plot
                fill=DRAM, group=DRAM, color=DRAM)) +           # colour determined by "dupp"
     scale_colour_manual(values=c( "#0072B2", "#D55E00", "#CC79A7", "#BB7900")) +
     geom_line() +

@@ -21,7 +21,15 @@ print(args$graphtitle)
 
 hp_normalized_ipc <- read.csv(hpipc_csv)
 lp_normalized_ipc <- read.csv(lpipc_csv)
+hp_normalized_ipc$idu <- row.names(hp_normalized_ipc)
+lp_normalized_ipc$idu <- row.names(lp_normalized_ipc)
+hp_normalized_ipc <- transform(hp_normalized_ipc, idu = as.numeric(idu))
+lp_normalized_ipc <- transform(lp_normalized_ipc, idu = as.numeric(idu))
+sapply(hp_normalized_ipc, mode)
+sapply(hp_normalized_ipc, class)
 ref_memory_intensity <- read.csv(ref_memory_intensity_csv)
+ref_memory_intensity$idu <- row.names(ref_memory_intensity)
+ref_memory_intensity <- transform(ref_memory_intensity, idu = as.numeric(idu))
 ytitle <- args$ytitle
 graphtitle <- args$graphtitle
 output_prefix <- paste(args$dir, "/", args$ytitle, sep="")
@@ -33,17 +41,17 @@ print(output_prefix)
 library(dplyr)
 print(head(ref_memory_intensity))
 
-ref_memory_intensity <- filter(ref_memory_intensity, DRAM == "DDR3-2133L")
+ref_memory_intensity <- filter(ref_memory_intensity, DRAM == "HBM-1000")
 print(head(ref_memory_intensity))
 
 # The next block of code renders the plot, the columns `dose` and `length` on the x, y axes and `supp` is used to group the data and [colour](https://www.getdatajoy.com/learn/Colour_Names:_Complete_List) each line.
 cbPalette <- c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#FF79A7")
 
 library(ggplot2)
-p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, ref_memory_intensity), y=value,       # columns to plot
+p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, idu), y=value,       # columns to plot
                fill=DRAM, group=DRAM, color=DRAM)) +           # colour determined by "dupp"
-    scale_fill_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
-    scale_colour_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
+#    scale_fill_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
+#    scale_colour_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
     geom_line() +
     geom_point() +
     xlab("workloads") +                               # x-axis label
@@ -54,7 +62,7 @@ p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, ref_memory_intensity), y=v
     plot.margin=rep(unit(0,"cm"),each=4))
 
 
-p2<-ggplot(ref_memory_intensity, aes(x=reorder(workload, ref_memory_intensity), y=ref_memory_intensity)) +
+p2<-ggplot(ref_memory_intensity, aes(x=reorder(workload, idu), y=ref_memory_intensity)) +
     geom_bar(stat='identity') +
     xlab("workloads") +
     ylab("average outstanding requests") +
@@ -62,25 +70,14 @@ p2<-ggplot(ref_memory_intensity, aes(x=reorder(workload, ref_memory_intensity), 
     theme(axis.text.x=element_text(angle=60, vjust=0.5, size=8),
     plot.margin=rep(unit(0,"cm"),each=4))
 
-p3<-ggplot(lp_normalized_ipc, aes(x=reorder(workload, ref_memory_intensity), y=value,       # columns to plot
-               fill=DRAM, group=DRAM, color=DRAM)) +           # colour determined by "dupp"
-    scale_colour_manual(values=c("#0072B2", "#D55E00", "#CC79A7", "#BB7900")) +
-    geom_line() +
-    xlab("workloads") +                               # x-axis label
-    ylab(ytitle) +                             # y-axis label
-    ggtitle(graphtitle)  +                          # title
-    theme(axis.text.x=element_text(angle=60, vjust=0.5),
-    legend.text=element_text(size=8),
-    plot.margin=rep(unit(0,"cm"),each=4))
-
-
 library(gridExtra)
 library(grid)
-grid.arrange(p1,p2,p3,ncol=2, nrow=2,
+grid.arrange(p1,p2,ncol=2, nrow=1,
 widths = c(unit(0.6, "npc"), unit(0.4, "npc")))
 
- g <- arrangeGrob(p1,p2,p3,ncol=2, nrow=2,
-widths = c(unit(0.6, "npc"), unit(0.4, "npc"))) #generates g
+ g <- arrangeGrob(p1,p2,ncol=2, nrow=1,
+widths = c(unit(0.6, "npc"), unit(0.4, "npc")), heights = c(unit(0.5, "npc"))) #generates g
  ggsave(file=paste(output_prefix,".png", sep=""), g) #saves g
  ggsave(file=paste(output_prefix,".pdf", sep=""), g) #saves g
 
+ warnings()
