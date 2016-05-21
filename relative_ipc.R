@@ -51,13 +51,13 @@ p1<-ggplot(hp_normalized_ipc, aes(x=reorder(workload, idu), y=value,       # col
     scale_fill_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
     scale_colour_manual(values=c("#000000", "#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442")) +
     geom_line() +
-    geom_point() +
+    geom_point(aes(shape=DRAM),size=1) +
     xlab("workloads") +                               # x-axis label
     ylab(ytitle) +                             # y-axis label
     ggtitle(graphtitle)  +                          # title
     theme(axis.text.x=element_text(angle=60, vjust=0.5),
     legend.text=element_text(size=8),
-    plot.margin=rep(unit(0,"cm"),each=4))
+    plot.margin=unit(c(1,0,1,1), "lines")) #rep(unit(0,"cm"),each=4))
 
 
 p2<-ggplot(ref_MPKI, aes(x=reorder(workload, idu), y=ref_MPKI)) +
@@ -66,18 +66,19 @@ p2<-ggplot(ref_MPKI, aes(x=reorder(workload, idu), y=ref_MPKI)) +
     ylab("MPKI") +
     ylim(0,200) +
     theme(axis.text.x=element_text(angle=60, vjust=0.5, size=8),
-    plot.margin=rep(unit(0,"cm"),each=4))
+    plot.margin=unit(c(1,1,1,0), "lines")) #rep(unit(0,"cm"),each=4))
 
 p3<-ggplot(lp_normalized_ipc, aes(x=reorder(workload, idu), y=value,       # columns to plot
                fill=DRAM, group=DRAM, color=DRAM)) +           # colour determined by "dupp"
     scale_colour_manual(values=c( "#0072B2", "#D55E00", "#CC79A7", "#BB7900")) +
     geom_line() +
+    geom_point(aes(shape=DRAM),size=1) +
     xlab("workloads") +                               # x-axis label
     ylab(ytitle) +                             # y-axis label
     ggtitle(graphtitle)  +                          # title
     theme(axis.text.x=element_text(angle=60, vjust=0.5),
     legend.text=element_text(size=8),
-    plot.margin=rep(unit(0,"cm"),each=4))
+    plot.margin=unit(c(1,0,1,1), "lines")) #rep(unit(0,"cm"),each=4))
 
 
 library(gridExtra)

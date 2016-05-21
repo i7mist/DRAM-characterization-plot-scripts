@@ -34,11 +34,12 @@ p1<-ggplot(all_ipc, aes(x=reorder(workload, ref_MPKI), y=value,       # columns 
                fill=DRAM, group=DRAM, color=DRAM)) +           # colour determined by "dupp"
     scale_fill_manual(values=cbPalette) +
     scale_colour_manual(values=cbPalette) +
+    scale_shape_manual(values = 0:10) +
     geom_line() +
-    geom_point() +
+    geom_point(aes(shape=DRAM), size = 1) +
     xlab("workloads") +                               # x-axis label
     ylab(ytitle) +                             # y-axis label
-    ylim(0, 5) +
+    ylim(0, 4.2) +
     ggtitle(graphtitle)  +                          # title
     theme(axis.text.x=element_text(angle=60, vjust=0.5),
     legend.text=element_text(size=8),
