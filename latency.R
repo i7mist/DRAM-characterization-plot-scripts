@@ -32,6 +32,12 @@ plots <- list()
 workload_num <- length(workload_list)
 newpage_cnt <- 0
 
+g_legend<-function(a.gplot){
+  tmp <- ggplot_gtable(ggplot_build(a.gplot))
+  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+  legend <- tmp$grobs[[leg]]
+  return(legend)}
+
 for (i in 1:workload_num)
 {
     workload_name <- workload_list[i]
@@ -50,13 +56,18 @@ for (i in 1:workload_num)
         ylab("latency(ns)") +
 #        theme_bw() +
         theme(plot.title=element_text(size=10),
-        axis.text.x=element_text(angle=30, size=5, vjust=0.2),
+        axis.text.x=element_text(angle=30, size=5, vjust=0.7),
         axis.title.x=element_blank(),
         axis.title.y=element_blank(),
-        legend.text=element_text(size=5))
+        legend.text=element_text(size=5),
+        plot.margin=unit(c(0.5, 1, 0, 1), "line"))
 
-    if (i %% 6 == 0) {
+    if (i %% 11 == 0) {
       print(i)
+      mylegend <- g_legend(plots[[1]])
+      plots <- lapply(plots, function(x)
+                      x + theme(legend.position = "none"))
+      plots[[length(plots) + 1]] <- mylegend
       g <- arrangeGrob(grobs=plots)
       ggsave(file=paste(output_prefix, newpage_cnt , ".pdf", sep=""), g)
       ggsave(file=paste(output_prefix, newpage_cnt , ".png", sep=""), g)
@@ -66,6 +77,10 @@ for (i in 1:workload_num)
 }
 
 if (length(plots) > 0) {
+  mylegend <- g_legend(plots[[1]])
+  plots <- lapply(plots, function(x)
+                  x + theme(legend.position = "none"))
+  plots[[length(plots) + 1]] <- mylegend
   g <- arrangeGrob(grobs=plots)
   ggsave(file=paste(output_prefix, newpage_cnt , ".pdf", sep=""), g)
   ggsave(file=paste(output_prefix, newpage_cnt , ".png", sep=""), g)
