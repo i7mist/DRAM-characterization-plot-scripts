@@ -1,0 +1,56 @@
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle Mediabench2 --dir /home/tianshi/tianshi-Workspace/ramulator_stats/mediabench2/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle Redis+YCSB --dir /home/tianshi/tianshi-Workspace/ramulator_stats/redis_ycsb/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle Hadoop --dir /home/tianshi/tianshi-Workspace/ramulator_stats/hadoop/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle SPEC2006 --dir /home/tianshi/tianshi-Workspace/ramulator_stats/spec2006/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle IOZone_64M_r4K --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_64m_r4k/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle IOZone_256M_r4K --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_256m_r4k/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle IOZone_256M_r1M --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_256m_r1m/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle Netperf --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/netperf/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_bandwidth --graphtitle Freescale --dir /home/tianshi/tianshi-Workspace/ramulator_stats/freescale/compare_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_ipc --graphtitle memcpy/memset --dir /home/tianshi/tianshi-Workspace/ramulator_stats/rc/comparison_DDR3/single-threaded_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_weighted_speedup --graphtitle "SPEC2006(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/spec2006/compare_DDR3/multiprogram_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_weighted_speedup --graphtitle "Redis+YCSB(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/redis_ycsb/compare_DDR3/multiprogram_R_dataframe
+Rscript comparison_DDR3.R --ytitle normalized_weighted_speedup --graphtitle "Hadoop(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/hadoop/compare_DDR3/multiprogram_R_dataframe
+
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle Mediabench2 --dir /home/tianshi/tianshi-Workspace/ramulator_stats/mediabench2/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle Redis+YCSB --dir /home/tianshi/tianshi-Workspace/ramulator_stats/redis_ycsb/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle Hadoop --dir /home/tianshi/tianshi-Workspace/ramulator_stats/hadoop/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle SPEC2006 --dir /home/tianshi/tianshi-Workspace/ramulator_stats/spec2006/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle IOZone_64M_r4K --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_64m_r4k/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle IOZone_256M_r4K --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_256m_r4k/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle IOZone_256M_r1M --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_256m_r1m/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle Netperf --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/netperf/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle bandwidth --graphtitle Freescale --dir /home/tianshi/tianshi-Workspace/ramulator_stats/freescale/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle memcpy/memset --dir /home/tianshi/tianshi-Workspace/ramulator_stats/rc/row_bank_tradeoff/single-threaded_R_dataframe
+Rscript row_bank_tradeoff.R --ytitle weighted_speedup --graphtitle "SPEC2006(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/spec2006/row_bank_tradeoff/multiprogram_R_dataframe
+Rscript row_bank_tradeoff.R --ytitle weighted_speedup --graphtitle "Redis+YCSB(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/redis_ycsb/row_bank_tradeoff/multiprogram_R_dataframe
+Rscript row_bank_tradeoff.R --ytitle weighted_speedup --graphtitle "Hadoop(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/hadoop/row_bank_tradeoff/multiprogram_R_dataframe
+
+
+Rscript row_bank_tradeoff_avg.R --ytitle ipc --graphtitle Mediabench2 --dir /home/tianshi/tianshi-Workspace/ramulator_stats/mediabench2/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff_avg.R --ytitle ipc --graphtitle Redis+YCSB --dir /home/tianshi/tianshi-Workspace/ramulator_stats/redis_ycsb/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff.R --ytitle ipc --graphtitle Hadoop --dir /home/tianshi/tianshi-Workspace/ramulator_stats/hadoop/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff_avg.R --ytitle ipc --graphtitle SPEC2006 --dir /home/tianshi/tianshi-Workspace/ramulator_stats/spec2006/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff_avg.R --ytitle ipc --graphtitle IOZone_64M_r4K --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_64m_r4k/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff_avg.R --ytitle ipc --graphtitle IOZone_256M_r4K --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_256m_r4k/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff_avg.R --ytitle ipc --graphtitle IOZone_256M_r1M --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_256m_r1m/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff_avg.R --ytitle ipc --graphtitle Netperf --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/netperf/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff_avg.R --ytitle bandwidth --graphtitle Freescale --dir /home/tianshi/tianshi-Workspace/ramulator_stats/freescale/row_bank_tradeoff/single-threaded_R_dataframe/
+Rscript row_bank_tradeoff_avg.R --ytitle ipc --graphtitle memcpy/memset --dir /home/tianshi/tianshi-Workspace/ramulator_stats/rc/row_bank_tradeoff/single-threaded_R_dataframe
+Rscript row_bank_tradeoff_avg.R --ytitle weighted_speedup --graphtitle "SPEC2006(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/spec2006/row_bank_tradeoff/multiprogram_R_dataframe
+Rscript row_bank_tradeoff_avg.R --ytitle weighted_speedup --graphtitle "Redis+YCSB(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/redis_ycsb/row_bank_tradeoff/multiprogram_R_dataframe
+Rscript row_bank_tradeoff_avg.R --ytitle weighted_speedup --graphtitle "Hadoop(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/hadoop/row_bank_tradeoff/multiprogram_R_dataframe
+
+Rscript ideal_performance.R --ytitle ipc --graphtitle Mediabench2 --dir /home/tianshi/tianshi-Workspace/ramulator_stats/mediabench2/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle ipc --graphtitle Redis+YCSB --dir /home/tianshi/tianshi-Workspace/ramulator_stats/redis_ycsb/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle ipc --graphtitle Hadoop --dir /home/tianshi/tianshi-Workspace/ramulator_stats/hadoop/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle ipc --graphtitle SPEC2006 --dir /home/tianshi/tianshi-Workspace/ramulator_stats/spec2006/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle ipc --graphtitle IOZone_64M_r4K --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_64m_r4k/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle ipc --graphtitle IOZone_256M_r4K --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_256m_r4k/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle ipc --graphtitle IOZone_256M_r1M --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/iozone_256m_r1m/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle ipc --graphtitle Netperf --dir /home/tianshi/tianshi-Workspace/ramulator_stats/kernel_bench/netperf/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle bandwidth --graphtitle Freescale --dir /home/tianshi/tianshi-Workspace/ramulator_stats/freescale/ideal_DRAM/single-threaded_R_dataframe/
+Rscript ideal_performance.R --ytitle ipc --graphtitle memcpy/memset --dir /home/tianshi/tianshi-Workspace/ramulator_stats/rc/ideal_DRAM/single-threaded_R_dataframe
+Rscript ideal_performance.R --ytitle weighted_speedup --graphtitle "SPEC2006(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/spec2006/ideal_DRAM/multiprogram_R_dataframe
+Rscript ideal_performance.R --ytitle weighted_speedup --graphtitle "Redis+YCSB(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/redis_ycsb/ideal_DRAM/multiprogram_R_dataframe
+Rscript ideal_performance.R --ytitle weighted_speedup --graphtitle "Hadoop(Multiprogram)" --dir /home/tianshi/tianshi-Workspace/ramulator_stats/hadoop/ideal_DRAM/multiprogram_R_dataframe
