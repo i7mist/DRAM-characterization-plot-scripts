@@ -27,7 +27,7 @@ plots <- list()
 
 DRAMs <- c("DDR3-2133L", "DDR3-2133L-bank16", "DDR3-2133L-bank32", "DDR3-2133L-bank64", "DDR3-2133L-bank128", "DDR3-2133L-bank256", "GDDR5-7000", "GDDR5-7000-bank32", "GDDR5-7000-bank64", "GDDR5-7000-bank128", "GDDR5-7000-bank256", "GDDR5-7000-bank512", "HBM-1000", "HBM-1000-bank32", "HBM-1000-bank64", "HBM-1000-bank128", "HBM-1000-bank256", "HBM-1000-bank512", "HMC", "HMC-bank16", "HMC-32", "HMC-bank64", "HMC-bank128", "HMC-bank256", "HMC-RoBaCoVa", "HMC-RoBaCoVa-bank16", "HMC-RoBaCoVa-bank32", "HMC-RoBaCoVa-bank64", "HMC-RoBaCoVa-bank128", "HMC-RoBaCoVa-bank256")
 
-groupname <- c(1, 2, 4, 8, 16, 32, 1, 2, 4, 8, 16, 32, 1, 2, 4, 8, 16, 32, 1, 2, 4, 8, 16, 32, 1, 2, 4, 8, 32)
+groupname <- c(1, 2, 4, 8, 16, 32, 1, 2, 4, 8, 16, 32, 1, 2, 4, 8, 16, 32, 1, 2, 4, 8, 16, 32, 1, 2, 4, 8, 16, 32)
 
 standardname <- c("DDR3", "DDR3", "DDR3", "DDR3", "DDR3", "DDR3", "GDDR5", "GDDR5", "GDDR5", "GDDR5", "GDDR5", "GDDR5", "HBM", "HBM", "HBM", "HBM", "HBM", "HBM", "HMC", "HMC", "HMC", "HMC", "HMC", "HMC", "HMC-RoBaCoVa", "HMC-RoBaCoVa", "HMC-RoBaCoVa", "HMC-RoBaCoVa", "HMC-RoBaCoVa", "HMC-RoBaCoVa")
 

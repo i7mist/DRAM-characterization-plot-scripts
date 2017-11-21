@@ -53,11 +53,11 @@ for (i in 1:workload_num)
         ylim(0,1.01) +
         ggtitle(paste(exp$workload, exp$workload_feature, sep="\n")) +
         theme_bw() +
-        theme(plot.title=element_text(size=10),
-            axis.text.x=element_text(angle=30, size=5, vjust=0.5),
+        theme(plot.title=element_text(size=8),
+            axis.text.x=element_text(angle=40, size=7, vjust=0.5),
             axis.title.x=element_blank(),
             axis.title.y=element_blank(),
-            plot.margin=unit(c(1, 1, 1, 1), "line"))
+            plot.margin=unit(c(1, 2, 0, 1), "line"))
 
 
     if (i %% 11 == 0) {

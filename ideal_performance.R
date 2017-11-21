@@ -47,9 +47,10 @@ cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#D55E00",
 
 print(lat_BW_tradeoff)
 
-g <- ggplot(lat_BW_tradeoff, aes(width=.7, x=reorder(workload, -idu), y=value, fill=DRAM, colour=DRAM, group=standardname)) +
+g <- ggplot(lat_BW_tradeoff, aes(width=.7, x=reorder(workload, -ref_MPKI), y=value, fill=DRAM, colour=DRAM, group=standardname)) +
   xlab("workloads") +                               # x-axis label
   ylab(ytitle) +                             # y-axis label
+  ggtitle(graphtitle) +
   geom_bar(position=position_dodge(), stat="identity", colour="black", size=0.2) +
   scale_fill_manual(values=cbPalette) +
   geom_errorbar(aes(width=.7, y=upper_bound, ymax=upper_bound, ymin=upper_bound), colour = "#000000", position=position_dodge()) +
